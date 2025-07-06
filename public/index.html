@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockMock Simulator</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #0056b3; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="password"], input[type="date"], textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .password-container { /* New style for password input + toggle button */
+            position: relative;
+            margin-bottom: 15px; /* Adjust as needed */
+        }
+        .password-container input {
+            width: calc(100% - 22px - 40px); /* Adjust width to make space for the button */
+            padding-right: 40px; /* Space for the eye icon/button */
+        }
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            width: 50px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .password-toggle:hover {
+            color: #333;
+            background-color: #e0e0e0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+        }
+        #message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .loading {
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+            color: #555;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            background-color: #ffe6e6;
+            border: 1px solid #ffcccc;
+        }
+        .text-success { color: green; }
+        .text-danger { color: red; }
+        .date-result {
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .date-result:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>StockMock Simulation</h1>
+
+        <div id="message"></div>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" placeholder="e.g., 9876543210" required>
+
+        <label for="password">Password:</label>
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="button" id="togglePassword" class="password-toggle">Show</button>
+        </div>
+
+        <label for="startDate">From Date:</label>
+        <input type="date" id="startDate" required>
+
+        <label for="endDate">To Date:</label>
+        <input type="date" id="endDate" required>
+
+        <button id="loginButton">Run Simulation</button>
+
+        <div id="loading" class="loading" style="display: none;">Running simulation... This might take a while for a date range.</div>
+
+        <h2>Simulation Output:</h2>
+        <div id="output"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
